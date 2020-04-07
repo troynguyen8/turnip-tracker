@@ -1,0 +1,67 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Turnip Tracker</title>
+  <meta name="description" content="Turnip Tracker">
+  <meta name="author" content="Troy Nguyen">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container main-content p-5 mt-5">
+    <div class="d-flex justify-content-center flex-column w-100">
+      <div id="island-form-container" class="d-flex align-self-center">
+        <form id="island-form">
+          <div class="form-group">
+            <label class="mr-2" for="island-name">Enter your Island Name:</label>
+            <input type="text" id="island-name" name="island-name">
+          </div>
+          <input type="submit" class="btn btn-success" value="Get Turnip Data">
+        </form>
+      </div>
+      <div id="island-info-container" class="d-none">
+        <h1 id="island-name" class="text-center"></h1>
+        <canvas id="turnip-chart"></canvas>
+        <div class="d-flex justify-content-center">
+          <form id="price-add-form">
+            <div class="form-group">
+              <input type="number" id="price" name="price">
+              <input type="submit" class="btn btn-success" value="Add Current Price">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCrQuBME8hNv2CMl-GOnIDdUI8bTtGSy4g",
+      authDomain: "turnip-tracker-2b4a6.firebaseapp.com",
+      databaseURL: "https://turnip-tracker-2b4a6.firebaseio.com",
+      projectId: "turnip-tracker-2b4a6",
+      storageBucket: "turnip-tracker-2b4a6.appspot.com",
+      messagingSenderId: "723588065176",
+      appId: "1:723588065176:web:e5b7cef440b42050402ded",
+      measurementId: "G-4YQF1E01FR"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    window.db = firebase.firestore();
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>
