@@ -108,7 +108,13 @@
     document.getElementById('island-info-container').classList.remove('d-none');
     document.getElementById('island-name').innerHTML = islandName;
 
-    const islandData = islandRef.data();
+    const islandData = islandRef.data ?
+      islandRef.data() :
+      {
+        name: islandName,
+        prices: [],
+      };
+
     const chart = initChart(islandData.name, convertRawPricesToChartPrices(islandData.prices));
 
     const priceAddForm = document.getElementById('price-add-form');
